@@ -33,9 +33,6 @@ jobs:
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Asia/Shanghai
-          plugin_rss: yes
-          plugin_rss_limit: 5
-          plugin_rss_source: https://leojhonsong.github.io/zh-CN/atom.xml
           plugin_traffic: yes
       - name: latest blog posts
         uses: gautamkrishnar/blog-post-workflow@master
