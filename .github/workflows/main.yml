@@ -1,16 +1,18 @@
-# Visit https://github.com/lowlighter/metrics/blob/master/action.yml for full reference
-name: Metrics
+name: Github profile README
 on:
   # Schedule updates (each hour)
   schedule: [{cron: "0 * * * *"}]
   # Lines below let you run workflow manually and on each commit
   workflow_dispatch:
-  push: {branches: ["master", "main"]}
+  push:
+    branches:
+      - master
 jobs:
-  github-metrics:
+  profile-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@latest
+      - name: general svg
+        uses: lowlighter/metrics@latest # Visit https://github.com/lowlighter/metrics/blob/master/action.yml for full reference
         with:
           # Your GitHub token
           # The following scopes are required:
@@ -24,22 +26,36 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
 
           # Options
+          filename: general.svg
           user: LeoJhonSong
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Asia/Shanghai
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
           plugin_rss: yes
           plugin_rss_limit: 5
           plugin_rss_source: https://leojhonsong.github.io/zh-CN/atom.xml
-          plugin_stars: yes
-          plugin_stars_limit: 3
           plugin_traffic: yes
+      - name: latest blog posts
+        uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          feed_list: "https://leojhonsong.github.io/zh-CN/atom.xml"
+          max_post_count: 5
+      - name: heat map and wakatime
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          # Options
+          filename: heat_waka.svg
+          user: LeoJhonSong
+          template: classic
+          base: ""
+          config_timezone: Asia/Shanghai
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
           plugin_wakatime: yes
           plugin_wakatime_days: 30
           plugin_wakatime_languages_other: yes
-          plugin_wakatime_limit: 5
+          plugin_wakatime_limit: 8
           plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
           plugin_wakatime_url: https://wakatime.com
           plugin_wakatime_user: LeoJhonSong
