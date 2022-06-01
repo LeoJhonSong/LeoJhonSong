@@ -56,9 +56,10 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
           plugin_wakatime: yes
+          plugin_wakatime_token: 8838f628-1da2-4cd8-a724-8b610e3e2037
           plugin_wakatime_days: 30
           plugin_wakatime_languages_other: yes
           plugin_wakatime_limit: 8
-          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
+          plugin_wakatime_sections: time, projects-graphs, languages, languages-graphs, editors-graphs, os-graphs
           plugin_wakatime_url: https://wakatime.com
           plugin_wakatime_user: LeoJhonSong
