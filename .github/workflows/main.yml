@@ -32,6 +32,7 @@ jobs:
           user: LeoJhonSong
           template: classic
           base: header, activity, community, repositories, metadata
+          base_indepth: yes
           config_timezone: Asia/Shanghai
           plugin_traffic: yes
       - name: latest blog posts
