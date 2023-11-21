@@ -36,7 +36,7 @@ jobs:
           config_timezone: Asia/Shanghai
           plugin_traffic: yes
           plugin_followup: yes
-          plugin_followup_sections: user
+          # plugin_followup_sections: user
           plugin_followup_indepth: yes
       - name: latest blog posts
         uses: gautamkrishnar/blog-post-workflow@master
